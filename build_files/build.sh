@@ -10,8 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tailscale vim
-dnf5 remove -y firefox
+dnf5 install -y tailscale vim gvfs-nfs
+dnf5 remove -y firefox gnome-software
 
 # Use a COPR Example:
 #
