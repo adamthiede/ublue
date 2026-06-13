@@ -2,9 +2,9 @@
 
 set -ouex pipefail
 
-# install lowlevel network tool, basic editor, and a thing I need for accessing media
+# add necessary system packages
 # remove firefox - use from flathub
-dnf5 install -y tailscale vim gvfs-nfs
+dnf5 install -y tailscale vim gvfs-nfs syncthing
 dnf5 remove -y firefox
 
 echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
