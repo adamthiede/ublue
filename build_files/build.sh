@@ -11,6 +11,7 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf5 install -y tailscale
+dnf5 remove -y firefox
 
 # Use a COPR Example:
 #
@@ -21,4 +22,4 @@ dnf5 install -y tailscale
 
 #### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+# systemctl enable podman.socket
