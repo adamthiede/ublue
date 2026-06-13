@@ -1,4 +1,7 @@
 {
+  "default": [
+    { "type": "reject" }
+  ],
   "transports": {
     "docker": {
       "ghcr.io/adamthiede/ublue": [
