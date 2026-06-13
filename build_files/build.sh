@@ -22,4 +22,7 @@ dnf5 remove -y firefox
 
 #### Example for enabling a System Unit File
 
-# systemctl enable podman.socket
+systemctl enable tailscaled.service
+systemctl enable rpm-ostreed-automatic.timer
+
+echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
