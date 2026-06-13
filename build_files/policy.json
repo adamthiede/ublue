@@ -1,0 +1,13 @@
+{
+  "transports": {
+    "docker": {
+      "ghcr.io/adamthiede/ublue": [
+        {
+          "type": "sigstoreSigned",
+          "keyPath": "/etc/pki/containers/adamthiede-ublue.pub",
+          "signedIdentity": {"type": "matchRepository"}
+        }
+      ]
+    }
+  }
+}

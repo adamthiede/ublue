@@ -15,6 +15,7 @@ COPY build_files /
 # CentOS base images: quay.io/centos-bootc/centos-bootc:stream10
 FROM quay.io/fedora/fedora-silverblue:latest
 
+COPY ./cosign.pub /etc/pki/containers/adamthiede-ublue.pub
 ### [IM]MUTABLE /opt
 ## Some bootable images, like Fedora, have /opt symlinked to /var/opt, in order to
 ## make it mutable/writable for users. However, some packages write files to this directory,
@@ -24,7 +25,8 @@ FROM quay.io/fedora/fedora-silverblue:latest
 ## Uncomment the following line if one desires to make /opt immutable and be able to be used
 ## by the package manager.
 
-# RUN rm /opt && mkdir /opt
+RUN rm /opt && mkdir /opt
+COPY cosign.pub /etc/pki/containers/adamthiede-ublue.pub
 
 ### MODIFICATIONS
 ## make modifications desired in your image and install packages by modifying the build.sh script
@@ -34,7 +36,9 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh
+    /ctx/build.sh && \
+    cp /ctx/registry.yaml /etc/containers/registries.d/adam.yaml && \
+    cp /ctx/policy.json /etc/containers/policy.json
 
 ### LINTING
 ## Verify final image and contents are correct.
