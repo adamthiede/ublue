@@ -13,3 +13,4 @@ echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
 # enable tailscale and auto updates
 systemctl enable tailscaled.service
 systemctl enable rpm-ostreed-automatic.timer
+systemctl enable update-flatpaks.timer

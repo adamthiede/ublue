@@ -36,9 +36,10 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh && \
+    cp /ctx/update-flatpaks.* /usr/lib/systemd/system/ && \
     cp /ctx/registry.yaml /etc/containers/registries.d/adam.yaml && \
-    cp /ctx/policy.json /etc/containers/policy.json
+    cp /ctx/policy.json /etc/containers/policy.json && \
+    /ctx/build.sh
 
 ### LINTING
 ## Verify final image and contents are correct.
