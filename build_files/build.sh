@@ -7,6 +7,7 @@ set -ouex pipefail
 # remove firefox - use from flathub
 dnf5 install -y fedora-repos-ostree tailscale gvfs-nfs syncthing
 dnf5 remove -y firefox
+dnf5 clean all
 
 echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
 
