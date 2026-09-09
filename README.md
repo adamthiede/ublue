@@ -7,6 +7,12 @@ sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/adamthiede/ublue:lates
 sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/adamthiede/ublue:latest
 ```
 
+Return to "regular" silverblue: pick whatever the latest release is on https://fedoraproject.org/
+
+```
+sudo rpm-ostree rebase fedora:fedora/44/x86_64/silverblue
+```
+
 This repository is meant to be a template for building your own custom [bootc](https://github.com/bootc-dev/bootc) image. This template is the recommended way to make customizations to any image published by the Universal Blue Project.
 
 # Community
