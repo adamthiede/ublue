@@ -2,6 +2,11 @@
 
 Important info: https://github.com/ublue-os/image-template/issues/215
 
+```
+sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/adamthiede/ublue:latest
+sudo rpm-ostree rebase ostree-image-signed:docker://ghcr.io/adamthiede/ublue:latest
+```
+
 This repository is meant to be a template for building your own custom [bootc](https://github.com/bootc-dev/bootc) image. This template is the recommended way to make customizations to any image published by the Universal Blue Project.
 
 # Community
