@@ -5,7 +5,7 @@ set -ouex pipefail
 # add necessary system packages
 # add fedora-repos-ostree to enable rebasing back to silverblue
 # remove firefox - use from flathub
-dnf5 install -y fedora-repos-ostree tailscale gvfs-nfs syncthing
+dnf5 install -y fedora-repos-ostree tailscale gvfs-nfs syncthing gnome-tweaks
 dnf5 remove -y firefox
 dnf5 clean all
 
