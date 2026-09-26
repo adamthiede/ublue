@@ -9,16 +9,17 @@ dnf5 install -y fedora-repos-ostree tailscale gvfs-nfs syncthing gnome-tweaks
 dnf5 remove -y firefox
 dnf5 clean all
 
-echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
-
-flatpak_policies="/var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies"
-mkdir -p /etc/firefox/policies/
-mkdir -p "$flatpak_policies"
-
-cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json
-cp /ctx/firefox-policies.json "$flatpak_policies"/policies.json
-
 # enable tailscale and auto updates
+echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
 systemctl enable tailscaled.service
 systemctl enable rpm-ostreed-automatic.timer
+
+# install firefox policies
+mkdir -p /etc/firefox/policies/
+cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json
+
+# install custom systemd services
+cp /ctx/*.service /usr/lib/systemd/system/
+cp /ctx/*.timer /usr/lib/systemd/system/
 systemctl enable update-flatpaks.timer
+systemctl enable firefox-policies.timer

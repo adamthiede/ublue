@@ -1,0 +1,9 @@
+[Unit]
+Description=Copy Firefox Policies to Flatpak Policy Location
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

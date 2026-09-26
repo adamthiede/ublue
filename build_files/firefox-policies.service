@@ -1,0 +1,9 @@
+[Unit]
+Description=Copy Firefox Policies to Flatpak Policy Location
+
+[Service]
+Type=oneshot
+ExecStart=sh -c "mkdir -p /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies && cp /etc/firefox/policies/policies.json /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies/policies.json"
+
+[Install]
+WantedBy=multi-user.target
