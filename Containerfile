@@ -39,8 +39,6 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
 	cp /ctx/update-flatpaks.* /usr/lib/systemd/system/ && \
 	cp /ctx/registry.yaml /etc/containers/registries.d/adam.yaml && \
 	cp /ctx/policy.json /etc/containers/policy.json && \
-	mkdir -p /etc/firefox/policies/ && \
-	cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json && \
 	/ctx/build.sh
 
 ### LINTING
