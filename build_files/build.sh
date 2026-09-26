@@ -11,8 +11,12 @@ dnf5 clean all
 
 echo -e "[Daemon]\nAutomaticUpdatePolicy=stage" > /etc/rpm-ostreed.conf
 
-mkdir -p /etc/firefox/policies/ /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies/
-cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json /var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies/policies.json
+flatpak_policies="/var/lib/flatpak/extension/org.mozilla.firefox.systemconfig/$(uname -m)/stable/policies"
+mkdir -p /etc/firefox/policies/
+mkdir -p "$flatpak_policies"
+
+cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json
+cp /ctx/firefox-policies.json "$flatpak_policies"/policies.json
 
 # enable tailscale and auto updates
 systemctl enable tailscaled.service
