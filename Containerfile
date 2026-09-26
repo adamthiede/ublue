@@ -33,13 +33,15 @@ COPY cosign.pub /etc/pki/containers/adamthiede-ublue.pub
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    --mount=type=cache,dst=/var/cache \
-    --mount=type=cache,dst=/var/log \
-    --mount=type=tmpfs,dst=/tmp \
-    cp /ctx/update-flatpaks.* /usr/lib/systemd/system/ && \
-    cp /ctx/registry.yaml /etc/containers/registries.d/adam.yaml && \
-    cp /ctx/policy.json /etc/containers/policy.json && \
-    /ctx/build.sh
+	--mount=type=cache,dst=/var/cache \
+	--mount=type=cache,dst=/var/log \
+	--mount=type=tmpfs,dst=/tmp \
+	cp /ctx/update-flatpaks.* /usr/lib/systemd/system/ && \
+	cp /ctx/registry.yaml /etc/containers/registries.d/adam.yaml && \
+	cp /ctx/policy.json /etc/containers/policy.json && \
+	mkdir -p /etc/firefox/policies/ && \
+	cp /ctx/firefox-policies.json /etc/firefox/policies/policies.json && \
+	/ctx/build.sh
 
 ### LINTING
 ## Verify final image and contents are correct.
