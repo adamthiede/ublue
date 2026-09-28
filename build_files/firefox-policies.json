@@ -10,6 +10,8 @@
 		"DisableFeedbackCommands": true,
 		"DisableFirefoxStudies": true,
 		"DisableTelemetry": true,
+		"SearchSuggestEnabled": false,
+		"IPProtectionAvailable": false,
 		"FirefoxSuggest": {
 			"WebSuggestions": false,
 			"SponsoredSuggestions": false,
